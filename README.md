@@ -1,6 +1,6 @@
-# AASTU STUDENTS
+# AASTU STUDENTS APP Version 3.0 
 
-A new Flutter project.
+This is new version of the app built in FlutterFLow
 
 ## Getting Started
 
