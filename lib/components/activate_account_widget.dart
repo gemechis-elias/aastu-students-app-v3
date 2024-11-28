@@ -318,9 +318,9 @@ class _ActivateAccountWidgetState extends State<ActivateAccountWidget>
 
                               safeSetState(() {});
                             },
-                            child: FaIcon(
-                              FontAwesomeIcons.check,
-                              color: FlutterFlowTheme.of(context).success,
+                            child: Icon(
+                              Icons.close_sharp,
+                              color: FlutterFlowTheme.of(context).error,
                               size: 24.0,
                             ),
                           ),

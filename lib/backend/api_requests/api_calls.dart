@@ -23,20 +23,22 @@ class HoranGroup {
 class SendConfirmationCodeCall {
   Future<ApiCallResponse> call({
     String? aastuEmail = '',
-    String? clientId = 'aastu_students',
+    String? clientId,
     String? activationCode = '',
   }) async {
+    clientId ??= FFDevEnvironmentValues().ClientSecrate;
     final baseUrl = HoranGroup.getBaseUrl();
 
     final ffApiRequestBody = '''
 {
-  "email": "${aastuEmail}",
-  "client_id": "${clientId}",
-  "code": "${activationCode}"
+  "app_name": "AASTU Students App",
+  "user_email": "${aastuEmail}",
+  "otp": "${activationCode}",
+  "client_id": "${clientId}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Send Confirmation Code',
-      apiUrl: '${baseUrl}aastu_activation',
+      apiUrl: '${baseUrl}/send_otp',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -53,6 +55,67 @@ class SendConfirmationCodeCall {
 }
 
 /// End Horan Group Code
+
+/// Start OpenAI Group Code
+
+class OpenAIGroup {
+  static String getBaseUrl({
+    String? apiKey,
+  }) {
+    apiKey ??= FFDevEnvironmentValues().APIKEY;
+    return 'https://api.openai.com/v1/';
+  }
+
+  static Map<String, String> headers = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer [API_KEY]',
+  };
+  static ChatGPTCall chatGPTCall = ChatGPTCall();
+}
+
+class ChatGPTCall {
+  Future<ApiCallResponse> call({
+    String? prompt = '',
+    String? apiKey,
+  }) async {
+    apiKey ??= FFDevEnvironmentValues().APIKEY;
+    final baseUrl = OpenAIGroup.getBaseUrl(
+      apiKey: apiKey,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "model": "gpt-3.5-turbo",
+  "messages": [
+    {
+      "role": "user",
+      "content": "${escapeStringForJson(prompt)}"
+    }
+  ],
+  "temperature": 1.0
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'ChatGPT',
+      apiUrl: '${baseUrl}chat/completions',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ${apiKey}',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+/// End OpenAI Group Code
 
 class ApiPagingParams {
   int nextPageNumber = 0;
@@ -99,4 +162,15 @@ String _serializeJson(dynamic jsonVar, [bool isList = false]) {
     }
     return isList ? '[]' : '{}';
   }
+}
+
+String? escapeStringForJson(String? input) {
+  if (input == null) {
+    return null;
+  }
+  return input
+      .replaceAll('\\', '\\\\')
+      .replaceAll('"', '\\"')
+      .replaceAll('\n', '\\n')
+      .replaceAll('\t', '\\t');
 }

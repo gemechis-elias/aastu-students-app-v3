@@ -1,4 +1,4 @@
-import '/backend/gemini/gemini.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -30,10 +30,10 @@ class QuizGeneratorModel extends FlutterFlowModel<QuizGeneratorWidget> {
   TextEditingController? numberofQuestionsTextController;
   String? Function(BuildContext, String?)?
       numberofQuestionsTextControllerValidator;
-  // Stores action output result for [Gemini - Generate Text] action in Button widget.
-  String? jSONResponse;
+  // Stores action output result for [Backend Call - API (ChatGPT)] action in Button widget.
+  ApiCallResponse? jSONResponse;
   // Stores action output result for [Custom Action - jsonToQuestionsModel] action in Button widget.
-  List<QuestionModelStruct>? generatedQuestionFromGemini;
+  List<QuestionModelStruct>? generatedQuestionFromGPT;
 
   @override
   void initState(BuildContext context) {}

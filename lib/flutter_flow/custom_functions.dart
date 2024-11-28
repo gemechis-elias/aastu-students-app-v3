@@ -78,7 +78,26 @@ String promptGenerator(
 }
 
 dynamic stringToJson(String response) {
-  return jsonDecode(response);
+  try {
+    // Decode the JSON response
+    final decodedResponse = jsonDecode(response);
+
+    // Extract questions and answers from the API response
+    if (decodedResponse is Map<String, dynamic> &&
+        decodedResponse.containsKey('choices') &&
+        decodedResponse['choices'] is List) {
+      final content = decodedResponse['choices'][0]['message']['content'];
+      final extractedJson = jsonDecode(content);
+
+      if (extractedJson is Map<String, dynamic> &&
+          extractedJson.containsKey('questions')) {
+        return extractedJson; // Return the extracted questions JSON
+      }
+    }
+  } catch (e) {
+    // Handle errors and return empty JSON object
+    return {};
+  }
 }
 
 bool isJsonString(String response) {
