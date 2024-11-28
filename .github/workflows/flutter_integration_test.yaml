@@ -16,13 +16,13 @@ jobs:
     steps:
     # Step 1: Check out the repository
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     # Step 2: Set up Flutter
     - name: Setup Flutter
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: stable
+        flutter-version: '3.24.3' # Explicit version
 
     # Step 3: Install dependencies
     - name: Install dependencies
