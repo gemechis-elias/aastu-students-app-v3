@@ -1,0 +1,43 @@
+name: Run Flutter Integration Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: Run Integration Tests
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Check out the repository
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Step 2: Set up Flutter
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.24.3' 
+
+    # Step 3: Install dependencies
+    - name: Install dependencies
+      run: flutter pub get
+
+    # Step 4: Run integration tests
+    - name: Run integration test
+      env:
+        FIREBASE_AUTH_EMULATOR_HOST: localhost:9099 # Example for Firebase emulator (if needed)
+      run: flutter test integration_test/test.dart
+
+    # Step 5: Collect test results
+    - name: Upload test results
+      if: failure() # Upload test results only if tests fail
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results
+        path: build/test-results/
