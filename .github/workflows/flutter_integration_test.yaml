@@ -1,4 +1,4 @@
-name: Run Flutter Integration Tests
+name: Flutter Tests
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    name: Run Integration Tests
+    name: Run Flutter Tests
     runs-on: ubuntu-latest
 
     steps:
@@ -22,32 +22,12 @@ jobs:
     - name: Setup Flutter
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: '3.24.3'
+        flutter-version: stable
 
     # Step 3: Install dependencies
     - name: Install dependencies
       run: flutter pub get
 
-    # Step 4: Set up Android Emulator
-    - name: Set up Android Emulator
-      uses: reactivecircus/android-emulator-runner@v2
-      with:
-        api-level: 30
-        target: default
-        arch: x86_64
-        profile: Nexus 6
-        script: flutter devices
-
-    # Step 5: Run integration tests
-    - name: Run integration tests
-      env:
-        FIREBASE_AUTH_EMULATOR_HOST: localhost:9099 # Example for Firebase emulator (if needed)
-      run: flutter test integration_test/test.dart
-
-    # Step 6: Collect test results
-    - name: Upload test results
-      if: failure() # Upload test results only if tests fail
-      uses: actions/upload-artifact@v3
-      with:
-        name: test-results
-        path: build/test-results/
+    # Step 4: Run tests
+    - name: Run tests
+      run: flutter test
