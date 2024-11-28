@@ -451,7 +451,7 @@ class _QuizPageWidgetState extends State<QuizPageWidget>
                             ClipRRect(
                               borderRadius: BorderRadius.circular(8.0),
                               child: Image.asset(
-                                'assets/images/20241026_172307.png',
+                                'assets/images/image-27-1024x569.png',
                                 width: 200.0,
                                 fit: BoxFit.contain,
                               ),
@@ -476,7 +476,7 @@ class _QuizPageWidgetState extends State<QuizPageWidget>
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   32.0, 8.0, 32.0, 0.0),
                               child: Text(
-                                'Create multiple-choice questions based on course topics to enhance your study. Powered by Gemini.',
+                                'Create multiple-choice questions based on course topics to enhance your study. Powered by OpenAI.',
                                 textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.of(context)
                                     .labelMedium
