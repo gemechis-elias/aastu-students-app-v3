@@ -1,4 +1,4 @@
-✨  # AASTU Students App v3
+ # 👨🏽‍💻 AASTU Students App v3
 
 ![Dart Version](https://img.shields.io/badge/Dart-3.5-blue)
 ![Flutter Version](https://img.shields.io/badge/Flutter-3.24.2-blue)
