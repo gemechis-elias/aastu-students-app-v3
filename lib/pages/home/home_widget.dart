@@ -222,28 +222,29 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Opacity(
-                                    opacity: 0.9,
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          2.0, 0.0, 8.0, 0.0),
-                                      child: InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          context.pushNamed('main_Chat');
-                                        },
-                                        child: FaIcon(
-                                          FontAwesomeIcons.facebookMessenger,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          size: 27.0,
+                                  if (false)
+                                    Opacity(
+                                      opacity: 0.9,
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            2.0, 0.0, 8.0, 0.0),
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            context.pushNamed('main_Chat');
+                                          },
+                                          child: FaIcon(
+                                            FontAwesomeIcons.facebookMessenger,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 27.0,
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
                                   AuthUserStreamWidget(
                                     builder: (context) => InkWell(
                                       splashColor: Colors.transparent,

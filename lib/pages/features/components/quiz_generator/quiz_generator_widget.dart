@@ -1,4 +1,4 @@
-import '/backend/gemini/gemini.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -507,9 +507,9 @@ class _QuizGeneratorWidgetState extends State<QuizGeneratorWidget> {
                                         4.0, 22.0, 4.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
-                                        await geminiGenerateText(
-                                          context,
-                                          functions.promptGenerator(
+                                        _model.jSONResponse =
+                                            await OpenAIGroup.chatGPTCall.call(
+                                          prompt: functions.promptGenerator(
                                               _model
                                                   .numberofQuestionsTextController
                                                   .text,
@@ -517,22 +517,23 @@ class _QuizGeneratorWidgetState extends State<QuizGeneratorWidget> {
                                                   .text,
                                               _model.courseContentTextController
                                                   .text),
-                                        ).then((generatedText) {
-                                          safeSetState(() => _model
-                                              .jSONResponse = generatedText);
-                                        });
+                                        );
 
                                         if (functions.isJsonString(
-                                            _model.jSONResponse!)) {
-                                          _model.generatedQuestionFromGemini =
+                                            (_model.jSONResponse?.jsonBody ??
+                                                    '')
+                                                .toString())) {
+                                          _model.generatedQuestionFromGPT =
                                               await actions
                                                   .jsonToQuestionsModel(
-                                            functions.stringToJson(
-                                                _model.jSONResponse!),
+                                            functions.stringToJson((_model
+                                                        .jSONResponse
+                                                        ?.jsonBody ??
+                                                    '')
+                                                .toString()),
                                           );
                                           FFAppState().generatedQuestions =
-                                              _model
-                                                  .generatedQuestionFromGemini!
+                                              _model.generatedQuestionFromGPT!
                                                   .toList()
                                                   .cast<QuestionModelStruct>();
                                           FFAppState().generateCourseTitle =
@@ -546,7 +547,10 @@ class _QuizGeneratorWidgetState extends State<QuizGeneratorWidget> {
                                               .showSnackBar(
                                             SnackBar(
                                               content: Text(
-                                                _model.jSONResponse!,
+                                                (_model.jSONResponse
+                                                            ?.jsonBody ??
+                                                        '')
+                                                    .toString(),
                                                 style: TextStyle(
                                                   color: FlutterFlowTheme.of(
                                                           context)

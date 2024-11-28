@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyCXCgp-kfwpCs4chZzT13B7EwX1XtLvQZM</string>
+	<string>AIzaSyBKRU8Kdi9ENUcEZLo2dQV-5tueoyCfHo4</string>
 	<key>GCM_SENDER_ID</key>
-	<string>1086867016849</string>
+	<string>187180178121</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.horansoftware.aastu</string>
 	<key>PROJECT_ID</key>
-	<string>aastu-students</string>
+	<string>aastu-students-demo</string>
 	<key>STORAGE_BUCKET</key>
-	<string>aastu-students.appspot.com</string>
+	<string>aastu-students-demo.firebasestorage.app</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1086867016849:ios:465cabf1bc8b8be726c330</string>
+	<string>1:187180178121:ios:5e8febc03172974be98b18</string>
 </dict>
 </plist>
