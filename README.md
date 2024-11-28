@@ -54,7 +54,7 @@ We welcome contributions to enhance the app:
 
 *Please Note*: This app is built using FlutterFlow. Currently, we are unable to share collaboration access on FlutterFlow. Therefore, while we appreciate your code contributions, our team will integrate them into FlutterFlow to maintain consistency.
 
-## Support and Sponsorship
+## 🤎 Support and Sponsorship
 
 Your support helps us improve and maintain the app. If you find this project useful, please consider sponsoring us. [Sponsor this project](https://github.com/sponsors/gemechis-elias)
 
