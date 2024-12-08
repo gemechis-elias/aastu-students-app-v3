@@ -4,10 +4,12 @@ import '/components/blocked_account_widget.dart';
 import '/components/create_modal/create_modal_widget.dart';
 import '/components/download_available/download_available_widget.dart';
 import '/components/web_components/side_nav/side_nav_widget.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:math';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -15,9 +17,11 @@ import 'package:collection/collection.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'home_model.dart';
 export 'home_model.dart';
 
@@ -37,6 +41,8 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
   late HomeModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -65,7 +71,9 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
               backgroundColor: Colors.transparent,
               alignment: AlignmentDirectional(0.0, 0.0)
                   .resolve(Directionality.of(context)),
-              child: BlockedAccountWidget(),
+              child: WebViewAware(
+                child: BlockedAccountWidget(),
+              ),
             );
           },
         );
@@ -127,7 +135,9 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                   backgroundColor: Colors.transparent,
                   alignment: AlignmentDirectional(0.0, 0.0)
                       .resolve(Directionality.of(context)),
-                  child: DownloadAvailableWidget(),
+                  child: WebViewAware(
+                    child: DownloadAvailableWidget(),
+                  ),
                 );
               },
             );
@@ -143,6 +153,41 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
       length: 3,
       initialIndex: 0,
     )..addListener(() => safeSetState(() {}));
+    animationsMap.addAll({
+      'iconOnActionTriggerAnimation1': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          RotateEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'iconOnActionTriggerAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          RotateEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -169,9 +214,11 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                 barrierColor: FlutterFlowTheme.of(context).accent4,
                 context: context,
                 builder: (context) {
-                  return Padding(
-                    padding: MediaQuery.viewInsetsOf(context),
-                    child: CreateModalWidget(),
+                  return WebViewAware(
+                    child: Padding(
+                      padding: MediaQuery.viewInsetsOf(context),
+                      child: CreateModalWidget(),
+                    ),
                   );
                 },
               ).then((value) => safeSetState(() {}));
@@ -222,29 +269,88 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  if (false)
-                                    Opacity(
-                                      opacity: 0.9,
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            2.0, 0.0, 8.0, 0.0),
-                                        child: InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            context.pushNamed('main_Chat');
-                                          },
-                                          child: FaIcon(
-                                            FontAwesomeIcons.facebookMessenger,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 27.0,
+                                  Stack(
+                                    children: [
+                                      if (!(Theme.of(context).brightness ==
+                                          Brightness.dark))
+                                        Opacity(
+                                          opacity: 0.9,
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    2.0, 0.0, 8.0, 0.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                setDarkModeSetting(
+                                                    context, ThemeMode.dark);
+                                                if (animationsMap[
+                                                        'iconOnActionTriggerAnimation2'] !=
+                                                    null) {
+                                                  await animationsMap[
+                                                          'iconOnActionTriggerAnimation2']!
+                                                      .controller
+                                                      .forward(from: 0.0);
+                                                }
+                                              },
+                                              child: Icon(
+                                                Icons.dark_mode_outlined,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                size: 27.0,
+                                              ),
+                                            ).animateOnActionTrigger(
+                                              animationsMap[
+                                                  'iconOnActionTriggerAnimation1']!,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ),
+                                      if (!(Theme.of(context).brightness ==
+                                          Brightness.light))
+                                        Opacity(
+                                          opacity: 0.9,
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    2.0, 0.0, 8.0, 0.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                setDarkModeSetting(
+                                                    context, ThemeMode.dark);
+                                                if (animationsMap[
+                                                        'iconOnActionTriggerAnimation1'] !=
+                                                    null) {
+                                                  await animationsMap[
+                                                          'iconOnActionTriggerAnimation1']!
+                                                      .controller
+                                                      .forward(from: 0.0);
+                                                }
+                                              },
+                                              child: Icon(
+                                                Icons.light_mode,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                size: 27.0,
+                                              ),
+                                            ).animateOnActionTrigger(
+                                              animationsMap[
+                                                  'iconOnActionTriggerAnimation2']!,
+                                            ),
+                                          ),
+                                        ),
+                                    ],
+                                  ),
                                   AuthUserStreamWidget(
                                     builder: (context) => InkWell(
                                       splashColor: Colors.transparent,
@@ -326,11 +432,13 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                     .accent4,
                                             context: context,
                                             builder: (context) {
-                                              return Padding(
-                                                padding:
-                                                    MediaQuery.viewInsetsOf(
-                                                        context),
-                                                child: CreateModalWidget(),
+                                              return WebViewAware(
+                                                child: Padding(
+                                                  padding:
+                                                      MediaQuery.viewInsetsOf(
+                                                          context),
+                                                  child: CreateModalWidget(),
+                                                ),
                                               );
                                             },
                                           ).then(
@@ -1879,8 +1987,19 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                   Colors
                                                                       .transparent,
                                                               onTap: () async {
-                                                                await launchURL(
-                                                                    'https://studentinfo.aastu.edu.et/');
+                                                                context
+                                                                    .pushNamed(
+                                                                  'StudentsPortalWeb',
+                                                                  queryParameters:
+                                                                      {
+                                                                    'url':
+                                                                        serializeParam(
+                                                                      'https://studentinfo.aastu.edu.et/',
+                                                                      ParamType
+                                                                          .String,
+                                                                    ),
+                                                                  }.withoutNulls,
+                                                                );
                                                               },
                                                               child: Container(
                                                                 width: double

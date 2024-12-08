@@ -14,6 +14,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'quiz_page_model.dart';
 export 'quiz_page_model.dart';
 
@@ -86,11 +87,13 @@ class _QuizPageWidgetState extends State<QuizPageWidget>
                 barrierColor: FlutterFlowTheme.of(context).accent4,
                 context: context,
                 builder: (context) {
-                  return GestureDetector(
-                    onTap: () => FocusScope.of(context).unfocus(),
-                    child: Padding(
-                      padding: MediaQuery.viewInsetsOf(context),
-                      child: QuizGeneratorWidget(),
+                  return WebViewAware(
+                    child: GestureDetector(
+                      onTap: () => FocusScope.of(context).unfocus(),
+                      child: Padding(
+                        padding: MediaQuery.viewInsetsOf(context),
+                        child: QuizGeneratorWidget(),
+                      ),
                     ),
                   );
                 },
@@ -451,8 +454,8 @@ class _QuizPageWidgetState extends State<QuizPageWidget>
                             ClipRRect(
                               borderRadius: BorderRadius.circular(8.0),
                               child: Image.asset(
-                                'assets/images/image-27-1024x569.png',
-                                width: 200.0,
+                                'assets/images/robot_happy.png',
+                                width: 70.0,
                                 fit: BoxFit.contain,
                               ),
                             ),
@@ -505,17 +508,21 @@ class _QuizPageWidgetState extends State<QuizPageWidget>
                                         backgroundColor: Colors.transparent,
                                         context: context,
                                         builder: (context) {
-                                          return GestureDetector(
-                                            onTap: () => FocusScope.of(context)
-                                                .unfocus(),
-                                            child: Padding(
-                                              padding: MediaQuery.viewInsetsOf(
-                                                  context),
-                                              child: QuizGeneratorWidget(
-                                                courseName:
-                                                    'Software Engineering and Entrance Exam',
-                                                content:
-                                                    'Set of challenging and thought-provoking multiple-choice questions (MCQs) for a comprehensive software engineering entrance exam. The questions should cover a range of topics including core SAT-style math problems, probability, and combinatorics, as well as emerging technology concepts and principles in computer science. Include topics such as basic and advanced programming concepts, database management, algorithms, data structures, and foundational theories in artificial intelligence. Ensure questions are a mix of conceptual and practical scenarios to test analytical and problem-solving skills. For emerging tech, questions should address IoT, cloud computing, machine learning, artificial intelligence history, augmented reality, and cybersecurity. Include questions that ask candidates to identify best practices in data management, software development lifecycles, and common standards in metadata. Keep each question concise but clear, offering four possible answers, and mark one as the correct choice.',
+                                          return WebViewAware(
+                                            child: GestureDetector(
+                                              onTap: () =>
+                                                  FocusScope.of(context)
+                                                      .unfocus(),
+                                              child: Padding(
+                                                padding:
+                                                    MediaQuery.viewInsetsOf(
+                                                        context),
+                                                child: QuizGeneratorWidget(
+                                                  courseName:
+                                                      'Software Engineering and Entrance Exam',
+                                                  content:
+                                                      'Set of challenging and thought-provoking multiple-choice questions (MCQs) for a comprehensive software engineering entrance exam. The questions should cover a range of topics including core SAT-style math problems, probability, and combinatorics, as well as emerging technology concepts and principles in computer science. Include topics such as basic and advanced programming concepts, database management, algorithms, data structures, and foundational theories in artificial intelligence. Ensure questions are a mix of conceptual and practical scenarios to test analytical and problem-solving skills. For emerging tech, questions should address IoT, cloud computing, machine learning, artificial intelligence history, augmented reality, and cybersecurity. Include questions that ask candidates to identify best practices in data management, software development lifecycles, and common standards in metadata. Keep each question concise but clear, offering four possible answers, and mark one as the correct choice.',
+                                                ),
                                               ),
                                             ),
                                           );
@@ -573,17 +580,21 @@ class _QuizPageWidgetState extends State<QuizPageWidget>
                                         backgroundColor: Colors.transparent,
                                         context: context,
                                         builder: (context) {
-                                          return GestureDetector(
-                                            onTap: () => FocusScope.of(context)
-                                                .unfocus(),
-                                            child: Padding(
-                                              padding: MediaQuery.viewInsetsOf(
-                                                  context),
-                                              child: QuizGeneratorWidget(
-                                                courseName:
-                                                    'Foundations of Anthropology course',
-                                                content:
-                                                    'Introductory anthropology course. Key areas of anthropology, including cultural anthropology, physical anthropology, archaeology, and linguistic anthropology. Include questions on foundational theories, research methods, and significant findings in each subfield. Address topics such as human evolution, cultural adaptation, language and communication, kinship systems, and societal structures.',
+                                          return WebViewAware(
+                                            child: GestureDetector(
+                                              onTap: () =>
+                                                  FocusScope.of(context)
+                                                      .unfocus(),
+                                              child: Padding(
+                                                padding:
+                                                    MediaQuery.viewInsetsOf(
+                                                        context),
+                                                child: QuizGeneratorWidget(
+                                                  courseName:
+                                                      'Foundations of Anthropology course',
+                                                  content:
+                                                      'Introductory anthropology course. Key areas of anthropology, including cultural anthropology, physical anthropology, archaeology, and linguistic anthropology. Include questions on foundational theories, research methods, and significant findings in each subfield. Address topics such as human evolution, cultural adaptation, language and communication, kinship systems, and societal structures.',
+                                                ),
                                               ),
                                             ),
                                           );
@@ -652,17 +663,21 @@ class _QuizPageWidgetState extends State<QuizPageWidget>
                                         backgroundColor: Colors.transparent,
                                         context: context,
                                         builder: (context) {
-                                          return GestureDetector(
-                                            onTap: () => FocusScope.of(context)
-                                                .unfocus(),
-                                            child: Padding(
-                                              padding: MediaQuery.viewInsetsOf(
-                                                  context),
-                                              child: QuizGeneratorWidget(
-                                                courseName:
-                                                    'Programming I: Fundamentals ',
-                                                content:
-                                                    'Introductory programming course focused on the fundamentals of programming and basic C++ syntax. The questions should cover essential topics such as data types, variables, operators, control structures (if statements, loops), functions, and basic input/output. Include questions on fundamental programming concepts like debugging, logic, and computational thinking, as well as syntax-specific questions that test knowledge of C++ syntax rules, functions, and error handling. Questions should be accessible for beginners, helping reinforce key concepts while challenging students to apply their understanding. Each question should provide four answer options with one correct answer, written to assess foundational programming skills in C++.',
+                                          return WebViewAware(
+                                            child: GestureDetector(
+                                              onTap: () =>
+                                                  FocusScope.of(context)
+                                                      .unfocus(),
+                                              child: Padding(
+                                                padding:
+                                                    MediaQuery.viewInsetsOf(
+                                                        context),
+                                                child: QuizGeneratorWidget(
+                                                  courseName:
+                                                      'Programming I: Fundamentals ',
+                                                  content:
+                                                      'Introductory programming course focused on the fundamentals of programming and basic C++ syntax. The questions should cover essential topics such as data types, variables, operators, control structures (if statements, loops), functions, and basic input/output. Include questions on fundamental programming concepts like debugging, logic, and computational thinking, as well as syntax-specific questions that test knowledge of C++ syntax rules, functions, and error handling. Questions should be accessible for beginners, helping reinforce key concepts while challenging students to apply their understanding. Each question should provide four answer options with one correct answer, written to assess foundational programming skills in C++.',
+                                                ),
                                               ),
                                             ),
                                           );
@@ -720,17 +735,21 @@ class _QuizPageWidgetState extends State<QuizPageWidget>
                                         backgroundColor: Colors.transparent,
                                         context: context,
                                         builder: (context) {
-                                          return GestureDetector(
-                                            onTap: () => FocusScope.of(context)
-                                                .unfocus(),
-                                            child: Padding(
-                                              padding: MediaQuery.viewInsetsOf(
-                                                  context),
-                                              child: QuizGeneratorWidget(
-                                                courseName:
-                                                    'Logic and Critical Thinking',
-                                                content:
-                                                    'Logic and Critical Thinking course. The questions should cover fundamental topics such as deductive and inductive reasoning, logical fallacies, argument structure, and the principles of sound reasoning. Include questions on evaluating arguments, identifying premises and conclusions, and applying logical concepts to real-world scenarios. Address key areas such as propositional logic, categorical logic, and the use of symbols in logical expressions. Additionally, incorporate questions that require students to analyze flawed arguments and distinguish between valid and invalid reasoning. Each question should present four answer choices, with one correct answer, aimed at assessing students’ understanding and application of critical thinking and logical analysis.',
+                                          return WebViewAware(
+                                            child: GestureDetector(
+                                              onTap: () =>
+                                                  FocusScope.of(context)
+                                                      .unfocus(),
+                                              child: Padding(
+                                                padding:
+                                                    MediaQuery.viewInsetsOf(
+                                                        context),
+                                                child: QuizGeneratorWidget(
+                                                  courseName:
+                                                      'Logic and Critical Thinking',
+                                                  content:
+                                                      'Logic and Critical Thinking course. The questions should cover fundamental topics such as deductive and inductive reasoning, logical fallacies, argument structure, and the principles of sound reasoning. Include questions on evaluating arguments, identifying premises and conclusions, and applying logical concepts to real-world scenarios. Address key areas such as propositional logic, categorical logic, and the use of symbols in logical expressions. Additionally, incorporate questions that require students to analyze flawed arguments and distinguish between valid and invalid reasoning. Each question should present four answer choices, with one correct answer, aimed at assessing students’ understanding and application of critical thinking and logical analysis.',
+                                                ),
                                               ),
                                             ),
                                           );

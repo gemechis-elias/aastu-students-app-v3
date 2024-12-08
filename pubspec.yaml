@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.7+7
+version: 3.0.10+10
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
@@ -111,6 +111,10 @@ dependencies:
   pdfx: 2.8.0
   photo_view: 0.15.0
   plugin_platform_interface: 2.1.8
+  pointer_interceptor: 0.10.1+2
+  pointer_interceptor_ios: 0.10.1
+  pointer_interceptor_platform_interface: 0.10.0+1
+  pointer_interceptor_web: 0.10.2+1
   provider: 6.1.2
   rxdart: 0.27.7
   shared_preferences: 2.3.2
@@ -138,11 +142,17 @@ dependencies:
   url_launcher_platform_interface: 2.3.2
   url_launcher_web: 2.3.3
   url_launcher_windows: 3.1.2
+  uuid: ^4.0.0
   video_player: 2.9.2
   video_player_android: 2.7.13
   video_player_avfoundation: 2.6.2
   video_player_platform_interface: 6.2.3
   video_player_web: 2.3.2
+  webview_flutter: 4.9.0
+  webview_flutter_android: 3.16.7
+  webview_flutter_platform_interface: 2.10.0
+  webview_flutter_wkwebview: 3.15.0
+  webviewx_plus: 0.5.0
   xml: 6.5.0
 
   # The following adds the Cupertino Icons font to your application.
@@ -154,6 +164,10 @@ dependency_overrides:
   device_info_plus_platform_interface: 7.0.1
   http: 1.2.2
   photo_view: 0.15.0
+  pointer_interceptor: 0.10.1+2
+  pointer_interceptor_ios: 0.10.1
+  pointer_interceptor_platform_interface: 0.10.0+1
+  pointer_interceptor_web: 0.10.2+1
   uuid: ^4.0.0
   win32: 5.5.1
 

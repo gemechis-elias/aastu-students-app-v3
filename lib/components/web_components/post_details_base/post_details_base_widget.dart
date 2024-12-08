@@ -19,6 +19,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'post_details_base_model.dart';
 export 'post_details_base_model.dart';
 
@@ -218,14 +219,16 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                                 .accent4,
                                         context: context,
                                         builder: (context) {
-                                          return Padding(
-                                            padding: MediaQuery.viewInsetsOf(
-                                                context),
-                                            child: Container(
-                                              height: 230.0,
-                                              child: DeletePostWidget(
-                                                postParameters:
-                                                    containerUserPostsRecord,
+                                          return WebViewAware(
+                                            child: Padding(
+                                              padding: MediaQuery.viewInsetsOf(
+                                                  context),
+                                              child: Container(
+                                                height: 230.0,
+                                                child: DeletePostWidget(
+                                                  postParameters:
+                                                      containerUserPostsRecord,
+                                                ),
                                               ),
                                             ),
                                           );

@@ -14,6 +14,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'daily_negarit_model.dart';
 export 'daily_negarit_model.dart';
 
@@ -61,11 +62,13 @@ class _DailyNegaritWidgetState extends State<DailyNegaritWidget> {
               barrierColor: FlutterFlowTheme.of(context).accent4,
               context: context,
               builder: (context) {
-                return GestureDetector(
-                  onTap: () => FocusScope.of(context).unfocus(),
-                  child: Padding(
-                    padding: MediaQuery.viewInsetsOf(context),
-                    child: AddNoteWidget(),
+                return WebViewAware(
+                  child: GestureDetector(
+                    onTap: () => FocusScope.of(context).unfocus(),
+                    child: Padding(
+                      padding: MediaQuery.viewInsetsOf(context),
+                      child: AddNoteWidget(),
+                    ),
                   ),
                 );
               },
@@ -501,13 +504,14 @@ class _DailyNegaritWidgetState extends State<DailyNegaritWidget> {
                                                                           color:
                                                                               Colors.transparent,
                                                                           child:
-                                                                              GestureDetector(
-                                                                            onTap: () =>
-                                                                                FocusScope.of(dialogContext).unfocus(),
+                                                                              WebViewAware(
                                                                             child:
-                                                                                TaskActionWidget(
-                                                                              task: listViewMyNotesRecord.reference,
-                                                                              showMark: true,
+                                                                                GestureDetector(
+                                                                              onTap: () => FocusScope.of(dialogContext).unfocus(),
+                                                                              child: TaskActionWidget(
+                                                                                task: listViewMyNotesRecord.reference,
+                                                                                showMark: true,
+                                                                              ),
                                                                             ),
                                                                           ),
                                                                         );
@@ -990,11 +994,13 @@ class _DailyNegaritWidgetState extends State<DailyNegaritWidget> {
                                                                             color:
                                                                                 Colors.transparent,
                                                                             child:
-                                                                                GestureDetector(
-                                                                              onTap: () => FocusScope.of(dialogContext).unfocus(),
-                                                                              child: TaskActionWidget(
-                                                                                task: listViewMyNotesRecord.reference,
-                                                                                showMark: false,
+                                                                                WebViewAware(
+                                                                              child: GestureDetector(
+                                                                                onTap: () => FocusScope.of(dialogContext).unfocus(),
+                                                                                child: TaskActionWidget(
+                                                                                  task: listViewMyNotesRecord.reference,
+                                                                                  showMark: false,
+                                                                                ),
                                                                               ),
                                                                             ),
                                                                           );

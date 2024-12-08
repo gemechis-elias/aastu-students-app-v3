@@ -22,8 +22,8 @@ Future startNFCReading(BuildContext context) async {
       NfcManager.instance.startSession(
         onDiscovered: (NfcTag tag) async {
           // Show a SnackBar with the detected tag data.
-          ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('NFC Tag Detected: ${tag.data}')));
+          // ScaffoldMessenger.of(context).showSnackBar(
+          //     SnackBar(content: Text('NFC Tag Detected: ${tag.data}')));
 
           // Optionally, stop the session after reading.
           NfcManager.instance.stopSession();
@@ -31,12 +31,12 @@ Future startNFCReading(BuildContext context) async {
       );
     } else {
       // Show a SnackBar if NFC is not available.
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('NFC not available.')));
+      // ScaffoldMessenger.of(context)
+      //     .showSnackBar(SnackBar(content: Text('NFC not available.')));
     }
   } catch (e) {
     // Show a SnackBar for any errors.
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text('Error reading NFC: $e')));
+    // ScaffoldMessenger.of(context)
+    //     .showSnackBar(SnackBar(content: Text('Error reading NFC: $e')));
   }
 }

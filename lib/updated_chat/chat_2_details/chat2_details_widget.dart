@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'chat2_details_model.dart';
 export 'chat2_details_model.dart';
 
@@ -412,12 +413,14 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                           barrierColor: Color(0x00FFFFFF),
                           context: context,
                           builder: (context) {
-                            return GestureDetector(
-                              onTap: () => FocusScope.of(context).unfocus(),
-                              child: Padding(
-                                padding: MediaQuery.viewInsetsOf(context),
-                                child: ChatDetailsOverlayWidget(
-                                  chatRef: widget!.chatRef!,
+                            return WebViewAware(
+                              child: GestureDetector(
+                                onTap: () => FocusScope.of(context).unfocus(),
+                                child: Padding(
+                                  padding: MediaQuery.viewInsetsOf(context),
+                                  child: ChatDetailsOverlayWidget(
+                                    chatRef: widget!.chatRef!,
+                                  ),
                                 ),
                               ),
                             );

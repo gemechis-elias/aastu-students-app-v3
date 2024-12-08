@@ -527,10 +527,8 @@ class _QuizGeneratorWidgetState extends State<QuizGeneratorWidget> {
                                               await actions
                                                   .jsonToQuestionsModel(
                                             functions.stringToJson((_model
-                                                        .jSONResponse
-                                                        ?.jsonBody ??
-                                                    '')
-                                                .toString()),
+                                                    .jSONResponse?.jsonBody ??
+                                                '')),
                                           );
                                           FFAppState().generatedQuestions =
                                               _model.generatedQuestionFromGPT!
@@ -547,10 +545,7 @@ class _QuizGeneratorWidgetState extends State<QuizGeneratorWidget> {
                                               .showSnackBar(
                                             SnackBar(
                                               content: Text(
-                                                (_model.jSONResponse
-                                                            ?.jsonBody ??
-                                                        '')
-                                                    .toString(),
+                                                'Error : ${(_model.jSONResponse?.jsonBody ?? '').toString()}',
                                                 style: TextStyle(
                                                   color: FlutterFlowTheme.of(
                                                           context)

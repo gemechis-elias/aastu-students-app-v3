@@ -160,7 +160,7 @@ class _NavBarPageState extends State<NavBarPage> {
     final tabs = {
       'home': HomeWidget(),
       'main_Feed': MainFeedWidget(),
-      'main_Chat': MainChatWidget(),
+      'BookStore': BookStoreWidget(),
       'main_Profile': MainProfileWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
@@ -204,10 +204,10 @@ class _NavBarPageState extends State<NavBarPage> {
             ),
             BottomNavigationBarItem(
               icon: Icon(
-                Icons.forum_outlined,
+                Icons.storefront,
                 size: 24.0,
               ),
-              label: '__',
+              label: '--',
               tooltip: '',
             ),
             BottomNavigationBarItem(

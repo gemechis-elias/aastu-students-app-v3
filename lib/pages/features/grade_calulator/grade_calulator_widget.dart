@@ -18,6 +18,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'grade_calulator_model.dart';
 export 'grade_calulator_model.dart';
 
@@ -778,17 +779,19 @@ class _GradeCalulatorWidgetState extends State<GradeCalulatorWidget> {
                                                               .resolve(
                                                                   Directionality.of(
                                                                       context)),
-                                                      child: GestureDetector(
-                                                        onTap: () =>
-                                                            FocusScope.of(
-                                                                    dialogContext)
-                                                                .unfocus(),
-                                                        child:
-                                                            SaveGpaComponentWidget(
-                                                          result:
-                                                              _model.results,
-                                                          gpa: FFAppState()
-                                                              .MyGPAList,
+                                                      child: WebViewAware(
+                                                        child: GestureDetector(
+                                                          onTap: () =>
+                                                              FocusScope.of(
+                                                                      dialogContext)
+                                                                  .unfocus(),
+                                                          child:
+                                                              SaveGpaComponentWidget(
+                                                            result:
+                                                                _model.results,
+                                                            gpa: FFAppState()
+                                                                .MyGPAList,
+                                                          ),
                                                         ),
                                                       ),
                                                     );
@@ -1467,13 +1470,15 @@ class _GradeCalulatorWidgetState extends State<GradeCalulatorWidget> {
                                                                         alignment:
                                                                             AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
                                                                         child:
-                                                                            GestureDetector(
-                                                                          onTap: () =>
-                                                                              FocusScope.of(dialogContext).unfocus(),
+                                                                            WebViewAware(
                                                                           child:
-                                                                              DeleteGradeHistoryWidget(
-                                                                            mygradeRef:
-                                                                                listViewMyGradeRecord.reference,
+                                                                              GestureDetector(
+                                                                            onTap: () =>
+                                                                                FocusScope.of(dialogContext).unfocus(),
+                                                                            child:
+                                                                                DeleteGradeHistoryWidget(
+                                                                              mygradeRef: listViewMyGradeRecord.reference,
+                                                                            ),
                                                                           ),
                                                                         ),
                                                                       );

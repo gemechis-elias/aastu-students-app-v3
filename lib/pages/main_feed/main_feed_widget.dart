@@ -20,8 +20,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'main_feed_model.dart';
 export 'main_feed_model.dart';
 
@@ -108,9 +110,11 @@ class _MainFeedWidgetState extends State<MainFeedWidget>
                   barrierColor: FlutterFlowTheme.of(context).accent4,
                   context: context,
                   builder: (context) {
-                    return Padding(
-                      padding: MediaQuery.viewInsetsOf(context),
-                      child: CreateModalWidget(),
+                    return WebViewAware(
+                      child: Padding(
+                        padding: MediaQuery.viewInsetsOf(context),
+                        child: CreateModalWidget(),
+                      ),
                     );
                   },
                 ).then((value) => safeSetState(() {}));
@@ -124,8 +128,10 @@ class _MainFeedWidgetState extends State<MainFeedWidget>
                       backgroundColor: Colors.transparent,
                       alignment: AlignmentDirectional(0.0, 0.0)
                           .resolve(Directionality.of(context)),
-                      child: ActivateAccountWidget(
-                        user: currentUserReference,
+                      child: WebViewAware(
+                        child: ActivateAccountWidget(
+                          user: currentUserReference,
+                        ),
                       ),
                     );
                   },
@@ -170,6 +176,32 @@ class _MainFeedWidgetState extends State<MainFeedWidget>
                           fontSize: 28.0,
                           letterSpacing: 0.0,
                         ),
+                  ),
+                  Expanded(
+                    child: Opacity(
+                      opacity: 0.9,
+                      child: Align(
+                        alignment: AlignmentDirectional(1.0, 0.0),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              2.0, 0.0, 8.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed('main_Chat');
+                            },
+                            child: FaIcon(
+                              FontAwesomeIcons.facebookMessenger,
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              size: 27.0,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -251,10 +283,12 @@ class _MainFeedWidgetState extends State<MainFeedWidget>
                                           FlutterFlowTheme.of(context).accent4,
                                       context: context,
                                       builder: (context) {
-                                        return Padding(
-                                          padding:
-                                              MediaQuery.viewInsetsOf(context),
-                                          child: CreateModalWidget(),
+                                        return WebViewAware(
+                                          child: Padding(
+                                            padding: MediaQuery.viewInsetsOf(
+                                                context),
+                                            child: CreateModalWidget(),
+                                          ),
                                         );
                                       },
                                     ).then((value) => safeSetState(() {}));
@@ -400,10 +434,12 @@ class _MainFeedWidgetState extends State<MainFeedWidget>
                                                               .resolve(
                                                                   Directionality.of(
                                                                       context)),
-                                                      child:
-                                                          StoryModalViewWidget(
-                                                        initialIndex:
-                                                            listViewIndex,
+                                                      child: WebViewAware(
+                                                        child:
+                                                            StoryModalViewWidget(
+                                                          initialIndex:
+                                                              listViewIndex,
+                                                        ),
                                                       ),
                                                     );
                                                   },
@@ -630,12 +666,14 @@ class _MainFeedWidgetState extends State<MainFeedWidget>
                                                               .resolve(
                                                                   Directionality.of(
                                                                       context)),
-                                                      child:
-                                                          PostModalViewWidget(
-                                                        postRef:
-                                                            socialFeedUserPostsRecord,
-                                                        userRef:
-                                                            userPostUsersRecord,
+                                                      child: WebViewAware(
+                                                        child:
+                                                            PostModalViewWidget(
+                                                          postRef:
+                                                              socialFeedUserPostsRecord,
+                                                          userRef:
+                                                              userPostUsersRecord,
+                                                        ),
                                                       ),
                                                     );
                                                   },
