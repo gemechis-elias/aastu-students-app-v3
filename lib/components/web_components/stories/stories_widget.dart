@@ -17,6 +17,7 @@ import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:octo_image/octo_image.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'stories_model.dart';
 export 'stories_model.dart';
 
@@ -376,18 +377,20 @@ class _StoriesWidgetState extends State<StoriesWidget>
                                                                       context,
                                                                   builder:
                                                                       (context) {
-                                                                    return Padding(
-                                                                      padding: MediaQuery
-                                                                          .viewInsetsOf(
-                                                                              context),
+                                                                    return WebViewAware(
                                                                       child:
-                                                                          Container(
-                                                                        height:
-                                                                            240.0,
+                                                                          Padding(
+                                                                        padding:
+                                                                            MediaQuery.viewInsetsOf(context),
                                                                         child:
-                                                                            DeleteStoryWidget(
-                                                                          storyDetails:
-                                                                              pageViewUserStoriesRecord,
+                                                                            Container(
+                                                                          height:
+                                                                              240.0,
+                                                                          child:
+                                                                              DeleteStoryWidget(
+                                                                            storyDetails:
+                                                                                pageViewUserStoriesRecord,
+                                                                          ),
                                                                         ),
                                                                       ),
                                                                     );
@@ -507,11 +510,14 @@ class _StoriesWidgetState extends State<StoriesWidget>
                                         barrierColor: Color(0x00000000),
                                         context: context,
                                         builder: (context) {
-                                          return Padding(
-                                            padding: MediaQuery.viewInsetsOf(
-                                                context),
-                                            child: CommentsWidget(
-                                              story: pageViewUserStoriesRecord,
+                                          return WebViewAware(
+                                            child: Padding(
+                                              padding: MediaQuery.viewInsetsOf(
+                                                  context),
+                                              child: CommentsWidget(
+                                                story:
+                                                    pageViewUserStoriesRecord,
+                                              ),
                                             ),
                                           );
                                         },

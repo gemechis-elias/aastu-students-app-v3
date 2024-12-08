@@ -59,3 +59,7 @@ export '/pages/authentication/about_us/about_us_widget.dart' show AboutUsWidget;
 export '/pages/create_post/create_post_widget.dart' show CreatePostWidget;
 export '/pages/features/n_f_c_reader/n_f_c_reader_widget.dart'
     show NFCReaderWidget;
+export '/privacy/privacy_widget.dart' show PrivacyWidget;
+export '/pages/features/students_portal_web/students_portal_web_widget.dart'
+    show StudentsPortalWebWidget;
+export '/pages/book_store/book_store_widget.dart' show BookStoreWidget;

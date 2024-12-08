@@ -14,6 +14,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:octo_image/octo_image.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'virtual_identity_model.dart';
 export 'virtual_identity_model.dart';
 
@@ -705,12 +706,15 @@ class _VirtualIdentityWidgetState extends State<VirtualIdentityWidget> {
                                                           .resolve(
                                                               Directionality.of(
                                                                   context)),
-                                                  child: GestureDetector(
-                                                    onTap: () => FocusScope.of(
-                                                            dialogContext)
-                                                        .unfocus(),
-                                                    child:
-                                                        DownloadVirtualIDWidget(),
+                                                  child: WebViewAware(
+                                                    child: GestureDetector(
+                                                      onTap: () =>
+                                                          FocusScope.of(
+                                                                  dialogContext)
+                                                              .unfocus(),
+                                                      child:
+                                                          DownloadVirtualIDWidget(),
+                                                    ),
                                                   ),
                                                 );
                                               },
@@ -763,14 +767,16 @@ class _VirtualIdentityWidgetState extends State<VirtualIdentityWidget> {
                                                       .resolve(
                                                           Directionality.of(
                                                               context)),
-                                              child: GestureDetector(
-                                                onTap: () =>
-                                                    FocusScope.of(dialogContext)
-                                                        .unfocus(),
-                                                child: DeleteVirtualIDWidget(
-                                                  vritualIDRef:
-                                                      columnMyVirtualIDRecord!
-                                                          .reference,
+                                              child: WebViewAware(
+                                                child: GestureDetector(
+                                                  onTap: () => FocusScope.of(
+                                                          dialogContext)
+                                                      .unfocus(),
+                                                  child: DeleteVirtualIDWidget(
+                                                    vritualIDRef:
+                                                        columnMyVirtualIDRecord!
+                                                            .reference,
+                                                  ),
                                                 ),
                                               ),
                                             );

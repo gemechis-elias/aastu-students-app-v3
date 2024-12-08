@@ -228,9 +228,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
         FFRoute(
           name: 'main_Chat',
           path: '/mainChat',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'main_Chat')
-              : MainChatWidget(),
+          builder: (context, params) => MainChatWidget(),
         ),
         FFRoute(
           name: 'chat_2_InviteUsers',
@@ -356,6 +354,28 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
           name: 'NFCReader',
           path: '/nFCReader',
           builder: (context, params) => NFCReaderWidget(),
+        ),
+        FFRoute(
+          name: 'Privacy',
+          path: '/privacy',
+          builder: (context, params) => PrivacyWidget(),
+        ),
+        FFRoute(
+          name: 'StudentsPortalWeb',
+          path: '/studentsPortalWeb',
+          builder: (context, params) => StudentsPortalWebWidget(
+            url: params.getParam(
+              'url',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'BookStore',
+          path: '/bookStore',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'BookStore')
+              : BookStoreWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

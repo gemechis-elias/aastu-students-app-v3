@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/features/components/delete_account/delete_account_widget.dart';
 import 'dart:math';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'edit_settings_model.dart';
 export 'edit_settings_model.dart';
 
@@ -37,6 +39,11 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => EditSettingsModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.getDeviceInfoResult = await actions.getDeviceInfo();
+    });
 
     animationsMap.addAll({
       'containerOnActionTriggerAnimation': AnimationInfo(
@@ -510,9 +517,11 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                                             AlignmentDirectional(0.0, 0.0)
                                                 .resolve(
                                                     Directionality.of(context)),
-                                        child: DeleteAccountWidget(
-                                          userRef:
-                                              editSettingsUsersRecord.reference,
+                                        child: WebViewAware(
+                                          child: DeleteAccountWidget(
+                                            userRef: editSettingsUsersRecord
+                                                .reference,
+                                          ),
                                         ),
                                       );
                                     },
@@ -800,22 +809,7 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                             text: TextSpan(
                               children: [
                                 TextSpan(
-                                  text: '©',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Figtree',
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
-                                        letterSpacing: 0.0,
-                                      ),
-                                ),
-                                TextSpan(
-                                  text: valueOrDefault<String>(
-                                    dateTimeFormat(
-                                        "yMMMd", getCurrentTimestamp),
-                                    '2024',
-                                  ),
+                                  text: '2024',
                                   style: TextStyle(
                                     fontStyle: FontStyle.normal,
                                   ),
@@ -827,11 +821,7 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                                   ),
                                 ),
                                 TextSpan(
-                                  text: valueOrDefault<String>(
-                                    valueOrDefault(
-                                        currentUserDocument?.appVersion, ''),
-                                    '1.0.5',
-                                  ),
+                                  text: _model.getDeviceInfoResult!.appVersion,
                                   style: TextStyle(),
                                 ),
                                 TextSpan(
@@ -839,10 +829,7 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                                   style: TextStyle(),
                                 ),
                                 TextSpan(
-                                  text: valueOrDefault<String>(
-                                    editSettingsUsersRecord.buildNumber,
-                                    '5 ',
-                                  ),
+                                  text: _model.getDeviceInfoResult!.buildNumber,
                                   style: TextStyle(),
                                 )
                               ],

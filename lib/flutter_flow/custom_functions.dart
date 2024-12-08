@@ -77,26 +77,33 @@ String promptGenerator(
   """;
 }
 
-dynamic stringToJson(String response) {
+dynamic stringToJson(dynamic response) {
   try {
-    // Decode the JSON response
-    final decodedResponse = jsonDecode(response);
+    // Ensure the input is converted to a string if not already
+    final String responseString =
+        response is String ? response : jsonEncode(response);
 
-    // Extract questions and answers from the API response
-    if (decodedResponse is Map<String, dynamic> &&
-        decodedResponse.containsKey('choices') &&
-        decodedResponse['choices'] is List) {
-      final content = decodedResponse['choices'][0]['message']['content'];
-      final extractedJson = jsonDecode(content);
+    // Parse the input response as a JSON object
+    final Map<String, dynamic> jsonResponse = jsonDecode(responseString);
 
-      if (extractedJson is Map<String, dynamic> &&
-          extractedJson.containsKey('questions')) {
-        return extractedJson; // Return the extracted questions JSON
-      }
-    }
+    // Navigate to the "content" field inside the response
+    final String content = jsonResponse['choices'][0]['message']['content'];
+
+    // Remove escape characters and clean up the string
+    final String cleanedContent = content
+        .replaceAll('\\n', '\n') // Replace escaped newlines
+        .replaceAll('\\"', '"') // Replace escaped double quotes
+        .replaceAll('\\\\', '\\') // Replace escaped backslashes
+        .trim();
+
+    // Parse the cleaned string into a proper JSON object
+    final dynamic parsedJson = jsonDecode(cleanedContent);
+
+    // Return the parsed JSON object
+    return parsedJson;
   } catch (e) {
-    // Handle errors and return empty JSON object
-    return {};
+    // Return an error message if parsing fails
+    return {'error': 'Failed to parse JSON', 'details': e.toString()};
   }
 }
 

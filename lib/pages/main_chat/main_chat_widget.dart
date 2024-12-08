@@ -11,6 +11,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'main_chat_model.dart';
 export 'main_chat_model.dart';
 
@@ -57,13 +58,37 @@ class _MainChatWidgetState extends State<MainChatWidget> {
                 backgroundColor:
                     FlutterFlowTheme.of(context).secondaryBackground,
                 automaticallyImplyLeading: false,
-                title: Text(
-                  'My Chats',
-                  style: FlutterFlowTheme.of(context).headlineLarge.override(
-                        fontFamily: 'Outfit',
-                        fontSize: 28.0,
-                        letterSpacing: 0.0,
+                title: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        context.safePop();
+                      },
+                      child: Icon(
+                        Icons.arrow_back_ios,
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        size: 29.0,
                       ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 0.0, 0.0),
+                      child: Text(
+                        'My Chats',
+                        style:
+                            FlutterFlowTheme.of(context).headlineLarge.override(
+                                  fontFamily: 'Outfit',
+                                  fontSize: 28.0,
+                                  letterSpacing: 0.0,
+                                ),
+                      ),
+                    ),
+                  ],
                 ),
                 actions: [
                   Builder(
@@ -106,11 +131,13 @@ class _MainChatWidgetState extends State<MainChatWidget> {
                                   backgroundColor: Colors.transparent,
                                   alignment: AlignmentDirectional(0.0, 0.0)
                                       .resolve(Directionality.of(context)),
-                                  child: GestureDetector(
-                                    onTap: () =>
-                                        FocusScope.of(dialogContext).unfocus(),
-                                    child: ActivateAccountWidget(
-                                      user: currentUserReference,
+                                  child: WebViewAware(
+                                    child: GestureDetector(
+                                      onTap: () => FocusScope.of(dialogContext)
+                                          .unfocus(),
+                                      child: ActivateAccountWidget(
+                                        user: currentUserReference,
+                                      ),
                                     ),
                                   ),
                                 );

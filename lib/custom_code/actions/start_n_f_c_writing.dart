@@ -29,22 +29,22 @@ Future startNFCWriting(
           await Ndef.from(tag)?.write(message);
 
           // Show a SnackBar notification for successful write.
-          ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Data emitted successfully')));
+          // ScaffoldMessenger.of(context).showSnackBar(
+          //     SnackBar(content: Text('Data emitted successfully')));
 
           Uint8List payload = message.records.first.payload;
           String text = String.fromCharCodes(payload);
 
           // Show a SnackBar with written data.
-          ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text('Written data: $text')));
+          // ScaffoldMessenger.of(context)
+          //     .showSnackBar(SnackBar(content: Text('Written data: $text')));
 
           // Stop the NFC session.
           NfcManager.instance.stopSession();
         } catch (e) {
           // Show a SnackBar for any error during the NFC write process.
-          ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Error emitting NFC data: $e')));
+          // ScaffoldMessenger.of(context).showSnackBar(
+          //     SnackBar(content: Text('Error emitting NFC data: $e')));
           NfcManager.instance
               .stopSession(errorMessage: 'Error emitting NFC data');
         }

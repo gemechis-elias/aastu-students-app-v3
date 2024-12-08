@@ -132,8 +132,7 @@ class _StudentsHandBookWidgetState extends State<StudentsHandBookWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         FlutterFlowPdfViewer(
-                          networkPath:
-                              columnConstantsRecord!.studentsHandBookLink,
+                          assetPath: 'assets/pdfs/1730017179741.pdf',
                           width: double.infinity,
                           height: MediaQuery.sizeOf(context).height * 0.95,
                           horizontalScroll: false,
