@@ -58,6 +58,10 @@ abstract class FlutterFlowTheme {
   late Color whiteText;
   late Color chipBlack;
   late Color blueBlackText;
+  late Color inputBackground;
+  late Color chipcolor;
+  late Color lightgreen;
+  late Color lightRed;
 
   @Deprecated('Use displaySmallFamily instead')
   String get title1Family => displaySmallFamily;
@@ -151,6 +155,10 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color whiteText = Color(0xFFFFFFFF);
   late Color chipBlack = Color(0xFF252525);
   late Color blueBlackText = Color(0xFF283439);
+  late Color inputBackground = Color(0xFFF8F8F8);
+  late Color chipcolor = Color(0xFFEDEAFD);
+  late Color lightgreen = Color(0xFFE4FCFF);
+  late Color lightRed = Color(0xFFFFECF2);
 }
 
 abstract class Typography {
@@ -327,6 +335,10 @@ class DarkModeTheme extends FlutterFlowTheme {
   late Color whiteText = Color(0xFFFFFFFF);
   late Color chipBlack = Color(0xFF252525);
   late Color blueBlackText = Color(0xFFFFFFFF);
+  late Color inputBackground = Color(0xFF313442);
+  late Color chipcolor = Color(0xFF313442);
+  late Color lightgreen = Color(0xFF2F3C3E);
+  late Color lightRed = Color(0xFF3E2C32);
 }
 
 extension TextStyleHelper on TextStyle {

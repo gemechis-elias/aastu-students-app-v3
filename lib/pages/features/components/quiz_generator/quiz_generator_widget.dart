@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
+import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
@@ -379,22 +380,6 @@ class _QuizGeneratorWidgetState extends State<QuizGeneratorWidget> {
                                                       _model.courseContentTextController
                                                               ?.text =
                                                           _model.pastedText!;
-                                                      _model
-                                                          .courseContentFocusNode
-                                                          ?.requestFocus();
-                                                      WidgetsBinding.instance
-                                                          .addPostFrameCallback(
-                                                              (_) {
-                                                        _model.courseContentTextController
-                                                                ?.selection =
-                                                            TextSelection
-                                                                .collapsed(
-                                                          offset: _model
-                                                              .courseContentTextController!
-                                                              .text
-                                                              .length,
-                                                        );
-                                                      });
                                                     });
 
                                                     safeSetState(() {});

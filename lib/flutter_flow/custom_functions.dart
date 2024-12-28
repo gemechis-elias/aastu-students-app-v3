@@ -178,3 +178,14 @@ bool checkAAASTUEmail(String str) {
   final emailRegex = RegExp(r"^[\w\.-]+@aastustudent\.edu\.et$");
   return emailRegex.hasMatch(str);
 }
+
+String trimBookTitle(String title) {
+  if (title.length <= 13) {
+    return title; // No need to trim if the title is already within the limit
+  }
+  return title.substring(0, 13) + "...";
+}
+
+DateTime expiredDateMaker(DateTime postedDate) {
+  return postedDate.add(Duration(hours: 24));
+}

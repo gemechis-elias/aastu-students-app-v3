@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/features/components/delete_account/delete_account_widget.dart';
 import 'dart:math';
+import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import 'edit_settings_widget.dart' show EditSettingsWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';

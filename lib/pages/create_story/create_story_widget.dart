@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -589,6 +590,8 @@ class _CreateStoryWidgetState extends State<CreateStoryWidget> {
                                   photoBlurHash:
                                       _model.uploadedLocalFile3.blurHash,
                                   uid: currentUserUid,
+                                  expiredDate: functions
+                                      .expiredDateMaker(getCurrentTimestamp),
                                 ));
 
                             context.pushNamed('main_Feed');

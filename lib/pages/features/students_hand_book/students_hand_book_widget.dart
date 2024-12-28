@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_pdf_viewer.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -40,7 +41,10 @@ class _StudentsHandBookWidgetState extends State<StudentsHandBookWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -134,7 +138,7 @@ class _StudentsHandBookWidgetState extends State<StudentsHandBookWidget> {
                         FlutterFlowPdfViewer(
                           assetPath: 'assets/pdfs/1730017179741.pdf',
                           width: double.infinity,
-                          height: MediaQuery.sizeOf(context).height * 0.95,
+                          height: MediaQuery.sizeOf(context).height * 0.98,
                           horizontalScroll: false,
                         ),
                       ],

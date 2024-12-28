@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/features/components/choice_list_item/choice_list_item_widget.dart';
 import '/pages/features/components/quiz_generator/quiz_generator_widget.dart';
 import 'dart:math';
+import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import 'quiz_page_widget.dart' show QuizPageWidget;
 import 'package:flutter/material.dart';

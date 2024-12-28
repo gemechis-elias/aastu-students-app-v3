@@ -3,6 +3,7 @@ import '/backend/backend.dart';
 import '/components/activate_account_widget.dart';
 import '/components/create_modal/create_modal_widget.dart';
 import '/components/empty_list_1/empty_list1_widget.dart';
+import '/components/post_loading_effect/post_loading_effect_widget.dart';
 import '/components/web_components/post_modal_view/post_modal_view_widget.dart';
 import '/components/web_components/side_nav/side_nav_widget.dart';
 import '/components/web_components/story_modal_view/story_modal_view_widget.dart';
@@ -13,6 +14,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:math';
+import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -48,18 +50,6 @@ class _MainFeedWidgetState extends State<MainFeedWidget>
     _model = createModel(context, () => MainFeedModel());
 
     animationsMap.addAll({
-      'containerOnPageLoadAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          ShimmerEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 3000.0.ms,
-            color: Color(0x80FFFFFF),
-            angle: 0.524,
-          ),
-        ],
-      ),
       'iconOnActionTriggerAnimation': AnimationInfo(
         trigger: AnimationTrigger.onActionTrigger,
         applyInitialState: false,
@@ -344,11 +334,15 @@ class _MainFeedWidgetState extends State<MainFeedWidget>
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 2.0, 0.0, 8.0),
-                          child: StreamBuilder<List<UserStoriesRecord>>(
-                            stream: queryUserStoriesRecord(
+                          child: FutureBuilder<List<UserStoriesRecord>>(
+                            future: queryUserStoriesRecordOnce(
                               queryBuilder: (userStoriesRecord) =>
-                                  userStoriesRecord.orderBy('storyPostedAt',
-                                      descending: true),
+                                  userStoriesRecord
+                                      .where(
+                                        'expiredDate',
+                                        isGreaterThan: getCurrentTimestamp,
+                                      )
+                                      .orderBy('expiredDate', descending: true),
                               limit: 20,
                             ),
                             builder: (context, snapshot) {
@@ -561,8 +555,8 @@ class _MainFeedWidgetState extends State<MainFeedWidget>
                             if (!snapshot.hasData) {
                               return Center(
                                 child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
+                                  width: 1.0,
+                                  height: 1.0,
                                   child: CircularProgressIndicator(
                                     valueColor: AlwaysStoppedAnimation<Color>(
                                       FlutterFlowTheme.of(context).primary,
@@ -600,18 +594,9 @@ class _MainFeedWidgetState extends State<MainFeedWidget>
                                     builder: (context, snapshot) {
                                       // Customize what your widget looks like when it's loading.
                                       if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 50.0,
-                                            height: 50.0,
-                                            child: CircularProgressIndicator(
-                                              valueColor:
-                                                  AlwaysStoppedAnimation<Color>(
-                                                FlutterFlowTheme.of(context)
-                                                    .primary,
-                                              ),
-                                            ),
-                                          ),
+                                        return Container(
+                                          width: double.infinity,
+                                          child: PostLoadingEffectWidget(),
                                         );
                                       }
 
@@ -1166,7 +1151,10 @@ class _MainFeedWidgetState extends State<MainFeedWidget>
                                                                       12.0),
                                                           child: Text(
                                                             socialFeedUserPostsRecord
-                                                                .postDescription,
+                                                                .postDescription
+                                                                .maybeHandleOverflow(
+                                                              maxChars: 200,
+                                                            ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium
@@ -1188,8 +1176,7 @@ class _MainFeedWidgetState extends State<MainFeedWidget>
                                             ),
                                           ),
                                         ),
-                                      ).animateOnPageLoad(animationsMap[
-                                          'containerOnPageLoadAnimation']!);
+                                      );
                                     },
                                   ),
                                 );

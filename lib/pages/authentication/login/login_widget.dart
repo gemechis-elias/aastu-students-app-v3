@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:math';
+import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -378,7 +379,8 @@ class _LoginWidgetState extends State<LoginWidget>
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   filled: true,
-                                  fillColor: Color(0xFFF8F8F8),
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .inputBackground,
                                   contentPadding:
                                       EdgeInsetsDirectional.fromSTEB(
                                           20.0, 4.0, 20.0, 4.0),
@@ -452,7 +454,8 @@ class _LoginWidgetState extends State<LoginWidget>
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   filled: true,
-                                  fillColor: Color(0xFFF8F8F8),
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .inputBackground,
                                   contentPadding:
                                       EdgeInsetsDirectional.fromSTEB(
                                           20.0, 4.0, 20.0, 4.0),

@@ -51,12 +51,12 @@ Future startNFCWriting(
       });
     } else {
       // Show a SnackBar if NFC is not available.
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('NFC not available.')));
+      // ScaffoldMessenger.of(context)
+      //     .showSnackBar(SnackBar(content: Text('NFC not available.')));
     }
   } catch (e) {
     // Show a SnackBar for any other errors.
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text('Error writing to NFC: $e')));
+    // ScaffoldMessenger.of(context)
+    //     .showSnackBar(SnackBar(content: Text('Error writing to NFC: $e')));
   }
 }

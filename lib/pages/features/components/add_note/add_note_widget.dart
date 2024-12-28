@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
+import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
@@ -786,7 +787,9 @@ class _AddNoteWidgetState extends State<AddNoteWidget> {
                                               child: Container(
                                                 height: 33.0,
                                                 decoration: BoxDecoration(
-                                                  color: Color(0xFFEDEAFD),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .chipcolor,
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           8.0),
@@ -888,7 +891,9 @@ class _AddNoteWidgetState extends State<AddNoteWidget> {
                                               child: Container(
                                                 height: 33.0,
                                                 decoration: BoxDecoration(
-                                                  color: Color(0xFFE4FCFF),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .lightgreen,
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           8.0),
@@ -990,7 +995,9 @@ class _AddNoteWidgetState extends State<AddNoteWidget> {
                                               child: Container(
                                                 height: 33.0,
                                                 decoration: BoxDecoration(
-                                                  color: Color(0xFFFFECF2),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .lightRed,
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           8.0),

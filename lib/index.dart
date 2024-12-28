@@ -63,3 +63,4 @@ export '/privacy/privacy_widget.dart' show PrivacyWidget;
 export '/pages/features/students_portal_web/students_portal_web_widget.dart'
     show StudentsPortalWebWidget;
 export '/pages/book_store/book_store_widget.dart' show BookStoreWidget;
+export '/book_upload/book_upload_widget.dart' show BookUploadWidget;

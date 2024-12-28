@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/updated_chat/chat_details_overlay/chat_details_overlay_widget.dart';
 import '/updated_chat/chat_thread_component/chat_thread_component_widget.dart';
 import 'dart:async';
+import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -69,7 +70,10 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -108,7 +112,7 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                   future: UsersRecord.getDocumentOnce(widget!.chatRef!.users
                       .where((e) => e != currentUserReference)
                       .toList()
-                      .first),
+                      .firstOrNull!),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
@@ -240,7 +244,7 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                                                   .where((e) =>
                                                       e != currentUserReference)
                                                   .toList()
-                                                  .last),
+                                                  .lastOrNull!),
                                           builder: (context, snapshot) {
                                             // Customize what your widget looks like when it's loading.
                                             if (!snapshot.hasData) {
@@ -415,7 +419,10 @@ class _Chat2DetailsWidgetState extends State<Chat2DetailsWidget> {
                           builder: (context) {
                             return WebViewAware(
                               child: GestureDetector(
-                                onTap: () => FocusScope.of(context).unfocus(),
+                                onTap: () {
+                                  FocusScope.of(context).unfocus();
+                                  FocusManager.instance.primaryFocus?.unfocus();
+                                },
                                 child: Padding(
                                   padding: MediaQuery.viewInsetsOf(context),
                                   child: ChatDetailsOverlayWidget(
