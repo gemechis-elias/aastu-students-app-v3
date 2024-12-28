@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/updated_chat/empty_state_simple/empty_state_simple_widget.dart';
+import 'dart:ui';
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'chat2_invite_users_widget.dart' show Chat2InviteUsersWidget;
 import 'package:cached_network_image/cached_network_image.dart';

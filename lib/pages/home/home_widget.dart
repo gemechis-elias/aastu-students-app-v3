@@ -10,6 +10,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:math';
+import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -118,9 +119,9 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
           _model.getTaskNoList = await actions.countNotesItems(
             _model.myNotes!.map((e) => e.reference).toList().toList(),
           );
-          _model.assignmentNo = _model.getTaskNoList!.first;
-          _model.testNo = _model.getTaskNoList![1];
-          _model.otherNo = _model.getTaskNoList!.last;
+          _model.assignmentNo = _model.getTaskNoList!.firstOrNull!;
+          _model.testNo = (_model.getTaskNoList!.elementAtOrNull(1))!;
+          _model.otherNo = _model.getTaskNoList!.lastOrNull!;
           safeSetState(() {});
           if (functions.stringToInteger(
                   valueOrDefault(currentUserDocument?.buildNumber, '')) <
@@ -326,7 +327,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                   Colors.transparent,
                                               onTap: () async {
                                                 setDarkModeSetting(
-                                                    context, ThemeMode.dark);
+                                                    context, ThemeMode.light);
                                                 if (animationsMap[
                                                         'iconOnActionTriggerAnimation1'] !=
                                                     null) {

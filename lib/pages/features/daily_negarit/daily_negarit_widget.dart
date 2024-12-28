@@ -8,6 +8,7 @@ import '/pages/features/components/add_note/add_note_widget.dart';
 import '/pages/features/components/empty_list_task/empty_list_task_widget.dart';
 import '/pages/features/components/empty_list_task_completed/empty_list_task_completed_widget.dart';
 import '/pages/features/components/task_action/task_action_widget.dart';
+import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/gestures.dart';
@@ -50,7 +51,10 @@ class _DailyNegaritWidgetState extends State<DailyNegaritWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -64,7 +68,10 @@ class _DailyNegaritWidgetState extends State<DailyNegaritWidget> {
               builder: (context) {
                 return WebViewAware(
                   child: GestureDetector(
-                    onTap: () => FocusScope.of(context).unfocus(),
+                    onTap: () {
+                      FocusScope.of(context).unfocus();
+                      FocusManager.instance.primaryFocus?.unfocus();
+                    },
                     child: Padding(
                       padding: MediaQuery.viewInsetsOf(context),
                       child: AddNoteWidget(),
@@ -507,7 +514,10 @@ class _DailyNegaritWidgetState extends State<DailyNegaritWidget> {
                                                                               WebViewAware(
                                                                             child:
                                                                                 GestureDetector(
-                                                                              onTap: () => FocusScope.of(dialogContext).unfocus(),
+                                                                              onTap: () {
+                                                                                FocusScope.of(dialogContext).unfocus();
+                                                                                FocusManager.instance.primaryFocus?.unfocus();
+                                                                              },
                                                                               child: TaskActionWidget(
                                                                                 task: listViewMyNotesRecord.reference,
                                                                                 showMark: true,
@@ -996,7 +1006,10 @@ class _DailyNegaritWidgetState extends State<DailyNegaritWidget> {
                                                                             child:
                                                                                 WebViewAware(
                                                                               child: GestureDetector(
-                                                                                onTap: () => FocusScope.of(dialogContext).unfocus(),
+                                                                                onTap: () {
+                                                                                  FocusScope.of(dialogContext).unfocus();
+                                                                                  FocusManager.instance.primaryFocus?.unfocus();
+                                                                                },
                                                                                 child: TaskActionWidget(
                                                                                   task: listViewMyNotesRecord.reference,
                                                                                   showMark: false,

@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/features/components/delete_virtual_i_d/delete_virtual_i_d_widget.dart';
 import '/pages/features/components/download_virtual_i_d/download_virtual_i_d_widget.dart';
+import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import 'virtual_identity_widget.dart' show VirtualIdentityWidget;
 import 'package:barcode_widget/barcode_widget.dart';

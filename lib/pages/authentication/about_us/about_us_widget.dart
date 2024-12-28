@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:math';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -785,8 +786,8 @@ class _AboutUsWidgetState extends State<AboutUsWidget>
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Container(
-                                    width: 64.0,
-                                    height: 64.0,
+                                    width: 55.0,
+                                    height: 55.0,
                                     decoration: BoxDecoration(
                                       color:
                                           FlutterFlowTheme.of(context).accent1,
@@ -849,7 +850,7 @@ class _AboutUsWidgetState extends State<AboutUsWidget>
                                             fontFamily: 'Lexend Deca',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
-                                            fontSize: 12.0,
+                                            fontSize: 10.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.normal,
                                           ),

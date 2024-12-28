@@ -11,6 +11,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:math';
+import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -388,9 +389,6 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                   valueOrDefault<String>(
                                     containerUserPostsRecord.postDescription,
                                     '--',
-                                  ).maybeHandleOverflow(
-                                    maxChars: 200,
-                                    replacement: '…',
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyLarge

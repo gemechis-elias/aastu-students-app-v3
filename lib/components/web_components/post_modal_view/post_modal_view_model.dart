@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:math';
+import 'dart:ui';
 import 'post_modal_view_widget.dart' show PostModalViewWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';

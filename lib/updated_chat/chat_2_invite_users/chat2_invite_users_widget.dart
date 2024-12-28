@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/updated_chat/empty_state_simple/empty_state_simple_widget.dart';
+import 'dart:ui';
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -66,7 +67,10 @@ class _Chat2InviteUsersWidgetState extends State<Chat2InviteUsersWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -585,7 +589,7 @@ class _Chat2InviteUsersWidgetState extends State<Chat2InviteUsersWidget> {
                               await chatsRecordReference.set({
                                 ...createChatsRecordData(
                                   userA: currentUserReference,
-                                  userB: _model.friendsList[1],
+                                  userB: _model.friendsList.elementAtOrNull(1),
                                   lastMessage: '',
                                   lastMessageTime: getCurrentTimestamp,
                                   lastMessageSentBy: currentUserReference,
@@ -602,7 +606,7 @@ class _Chat2InviteUsersWidgetState extends State<Chat2InviteUsersWidget> {
                                   ChatsRecord.getDocumentFromData({
                                 ...createChatsRecordData(
                                   userA: currentUserReference,
-                                  userB: _model.friendsList[1],
+                                  userB: _model.friendsList.elementAtOrNull(1),
                                   lastMessage: '',
                                   lastMessageTime: getCurrentTimestamp,
                                   lastMessageSentBy: currentUserReference,

@@ -66,6 +66,11 @@ class UserStoriesRecord extends FirestoreRecord {
   String get uid => _uid ?? '';
   bool hasUid() => _uid != null;
 
+  // "expiredDate" field.
+  DateTime? _expiredDate;
+  DateTime? get expiredDate => _expiredDate;
+  bool hasExpiredDate() => _expiredDate != null;
+
   void _initializeFields() {
     _user = snapshotData['user'] as DocumentReference?;
     _storyVideo = snapshotData['storyVideo'] as String?;
@@ -77,6 +82,7 @@ class UserStoriesRecord extends FirestoreRecord {
     _isOwner = snapshotData['isOwner'] as bool?;
     _photoBlurHash = snapshotData['photo_blur_hash'] as String?;
     _uid = snapshotData['uid'] as String?;
+    _expiredDate = snapshotData['expiredDate'] as DateTime?;
   }
 
   static CollectionReference get collection =>
@@ -123,6 +129,7 @@ Map<String, dynamic> createUserStoriesRecordData({
   bool? isOwner,
   String? photoBlurHash,
   String? uid,
+  DateTime? expiredDate,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -135,6 +142,7 @@ Map<String, dynamic> createUserStoriesRecordData({
       'isOwner': isOwner,
       'photo_blur_hash': photoBlurHash,
       'uid': uid,
+      'expiredDate': expiredDate,
     }.withoutNulls,
   );
 
@@ -156,7 +164,8 @@ class UserStoriesRecordDocumentEquality implements Equality<UserStoriesRecord> {
         e1?.numComments == e2?.numComments &&
         e1?.isOwner == e2?.isOwner &&
         e1?.photoBlurHash == e2?.photoBlurHash &&
-        e1?.uid == e2?.uid;
+        e1?.uid == e2?.uid &&
+        e1?.expiredDate == e2?.expiredDate;
   }
 
   @override
@@ -170,7 +179,8 @@ class UserStoriesRecordDocumentEquality implements Equality<UserStoriesRecord> {
         e?.numComments,
         e?.isOwner,
         e?.photoBlurHash,
-        e?.uid
+        e?.uid,
+        e?.expiredDate
       ]);
 
   @override

@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/features/components/choice_list_item/choice_list_item_widget.dart';
 import '/pages/features/components/quiz_generator/quiz_generator_widget.dart';
 import 'dart:math';
+import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -73,7 +74,10 @@ class _QuizPageWidgetState extends State<QuizPageWidget>
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -89,7 +93,10 @@ class _QuizPageWidgetState extends State<QuizPageWidget>
                 builder: (context) {
                   return WebViewAware(
                     child: GestureDetector(
-                      onTap: () => FocusScope.of(context).unfocus(),
+                      onTap: () {
+                        FocusScope.of(context).unfocus();
+                        FocusManager.instance.primaryFocus?.unfocus();
+                      },
                       child: Padding(
                         padding: MediaQuery.viewInsetsOf(context),
                         child: QuizGeneratorWidget(),
@@ -369,8 +376,9 @@ class _QuizPageWidgetState extends State<QuizPageWidget>
                                                                 .alternate,
                                                           ),
                                                           choice: allQuestionsItem
-                                                                  .choices[
-                                                              currentQuestionChoiceIndex],
+                                                              .choices
+                                                              .elementAtOrNull(
+                                                                  currentQuestionChoiceIndex)!,
                                                         ),
                                                       );
                                                     }),
@@ -510,9 +518,13 @@ class _QuizPageWidgetState extends State<QuizPageWidget>
                                         builder: (context) {
                                           return WebViewAware(
                                             child: GestureDetector(
-                                              onTap: () =>
-                                                  FocusScope.of(context)
-                                                      .unfocus(),
+                                              onTap: () {
+                                                FocusScope.of(context)
+                                                    .unfocus();
+                                                FocusManager
+                                                    .instance.primaryFocus
+                                                    ?.unfocus();
+                                              },
                                               child: Padding(
                                                 padding:
                                                     MediaQuery.viewInsetsOf(
@@ -582,9 +594,13 @@ class _QuizPageWidgetState extends State<QuizPageWidget>
                                         builder: (context) {
                                           return WebViewAware(
                                             child: GestureDetector(
-                                              onTap: () =>
-                                                  FocusScope.of(context)
-                                                      .unfocus(),
+                                              onTap: () {
+                                                FocusScope.of(context)
+                                                    .unfocus();
+                                                FocusManager
+                                                    .instance.primaryFocus
+                                                    ?.unfocus();
+                                              },
                                               child: Padding(
                                                 padding:
                                                     MediaQuery.viewInsetsOf(
@@ -665,9 +681,13 @@ class _QuizPageWidgetState extends State<QuizPageWidget>
                                         builder: (context) {
                                           return WebViewAware(
                                             child: GestureDetector(
-                                              onTap: () =>
-                                                  FocusScope.of(context)
-                                                      .unfocus(),
+                                              onTap: () {
+                                                FocusScope.of(context)
+                                                    .unfocus();
+                                                FocusManager
+                                                    .instance.primaryFocus
+                                                    ?.unfocus();
+                                              },
                                               child: Padding(
                                                 padding:
                                                     MediaQuery.viewInsetsOf(
@@ -737,9 +757,13 @@ class _QuizPageWidgetState extends State<QuizPageWidget>
                                         builder: (context) {
                                           return WebViewAware(
                                             child: GestureDetector(
-                                              onTap: () =>
-                                                  FocusScope.of(context)
-                                                      .unfocus(),
+                                              onTap: () {
+                                                FocusScope.of(context)
+                                                    .unfocus();
+                                                FocusManager
+                                                    .instance.primaryFocus
+                                                    ?.unfocus();
+                                              },
                                               child: Padding(
                                                 padding:
                                                     MediaQuery.viewInsetsOf(

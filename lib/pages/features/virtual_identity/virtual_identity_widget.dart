@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/features/components/delete_virtual_i_d/delete_virtual_i_d_widget.dart';
 import '/pages/features/components/download_virtual_i_d/download_virtual_i_d_widget.dart';
+import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
@@ -57,7 +58,10 @@ class _VirtualIdentityWidgetState extends State<VirtualIdentityWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -708,10 +712,14 @@ class _VirtualIdentityWidgetState extends State<VirtualIdentityWidget> {
                                                                   context)),
                                                   child: WebViewAware(
                                                     child: GestureDetector(
-                                                      onTap: () =>
-                                                          FocusScope.of(
-                                                                  dialogContext)
-                                                              .unfocus(),
+                                                      onTap: () {
+                                                        FocusScope.of(
+                                                                dialogContext)
+                                                            .unfocus();
+                                                        FocusManager.instance
+                                                            .primaryFocus
+                                                            ?.unfocus();
+                                                      },
                                                       child:
                                                           DownloadVirtualIDWidget(),
                                                     ),
@@ -769,9 +777,13 @@ class _VirtualIdentityWidgetState extends State<VirtualIdentityWidget> {
                                                               context)),
                                               child: WebViewAware(
                                                 child: GestureDetector(
-                                                  onTap: () => FocusScope.of(
-                                                          dialogContext)
-                                                      .unfocus(),
+                                                  onTap: () {
+                                                    FocusScope.of(dialogContext)
+                                                        .unfocus();
+                                                    FocusManager
+                                                        .instance.primaryFocus
+                                                        ?.unfocus();
+                                                  },
                                                   child: DeleteVirtualIDWidget(
                                                     vritualIDRef:
                                                         columnMyVirtualIDRecord!

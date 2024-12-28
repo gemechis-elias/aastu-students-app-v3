@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:math';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -373,7 +374,8 @@ class _SignupWidgetState extends State<SignupWidget>
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   filled: true,
-                                  fillColor: Color(0xFFF8F8F8),
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .inputBackground,
                                   contentPadding:
                                       EdgeInsetsDirectional.fromSTEB(
                                           20.0, 4.0, 20.0, 4.0),
@@ -447,7 +449,8 @@ class _SignupWidgetState extends State<SignupWidget>
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   filled: true,
-                                  fillColor: Color(0xFFF8F8F8),
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .inputBackground,
                                   contentPadding:
                                       EdgeInsetsDirectional.fromSTEB(
                                           20.0, 4.0, 20.0, 4.0),

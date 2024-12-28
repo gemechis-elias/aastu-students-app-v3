@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
+import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -349,7 +350,8 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     filled: true,
-                                    fillColor: Color(0xFFF8F8F8),
+                                    fillColor: FlutterFlowTheme.of(context)
+                                        .inputBackground,
                                     contentPadding:
                                         EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
@@ -423,7 +425,8 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     filled: true,
-                                    fillColor: Color(0xFFF8F8F8),
+                                    fillColor: FlutterFlowTheme.of(context)
+                                        .inputBackground,
                                     contentPadding:
                                         EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
@@ -505,7 +508,8 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       filled: true,
-                                      fillColor: Color(0xFFF8F8F8),
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .inputBackground,
                                       contentPadding:
                                           EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
@@ -576,7 +580,8 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                                           .secondaryText,
                                       size: 24.0,
                                     ),
-                                    fillColor: Color(0xFFF8F8F8),
+                                    fillColor: FlutterFlowTheme.of(context)
+                                        .inputBackground,
                                     elevation: 2.0,
                                     borderColor: Colors.transparent,
                                     borderWidth: 0.0,
@@ -632,7 +637,8 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                                           .secondaryText,
                                       size: 24.0,
                                     ),
-                                    fillColor: Color(0xFFF8F8F8),
+                                    fillColor: FlutterFlowTheme.of(context)
+                                        .inputBackground,
                                     elevation: 2.0,
                                     borderColor: Colors.transparent,
                                     borderWidth: 0.0,
@@ -657,7 +663,8 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                               Expanded(
                                 child: Container(
                                   decoration: BoxDecoration(
-                                    color: Color(0xFFF8F8F8),
+                                    color: FlutterFlowTheme.of(context)
+                                        .inputBackground,
                                     borderRadius: BorderRadius.circular(6.0),
                                   ),
                                   child: Material(

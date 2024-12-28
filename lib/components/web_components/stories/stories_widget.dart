@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
 import 'dart:math';
+import 'dart:ui';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:flutter/material.dart';
@@ -128,7 +129,7 @@ class _StoriesWidgetState extends State<StoriesWidget>
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Container(
-                              height: MediaQuery.sizeOf(context).height * 0.82,
+                              height: MediaQuery.sizeOf(context).height * 0.9,
                               child: Stack(
                                 children: [
                                   if (pageViewUserStoriesRecord.storyPhoto !=

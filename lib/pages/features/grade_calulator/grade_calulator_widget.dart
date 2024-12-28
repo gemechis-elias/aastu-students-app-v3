@@ -10,6 +10,7 @@ import '/components/save_gpa_component/save_gpa_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
@@ -54,7 +55,10 @@ class _GradeCalulatorWidgetState extends State<GradeCalulatorWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -425,7 +429,8 @@ class _GradeCalulatorWidgetState extends State<GradeCalulatorWidget> {
                                     width: double.infinity,
                                     decoration: BoxDecoration(
                                       color: valueOrDefault<Color>(
-                                        _model.colors[_model.colorIndex],
+                                        _model.colors
+                                            .elementAtOrNull(_model.colorIndex),
                                         Color(0x2604812F),
                                       ),
                                       borderRadius: BorderRadius.circular(10.0),
@@ -781,10 +786,15 @@ class _GradeCalulatorWidgetState extends State<GradeCalulatorWidget> {
                                                                       context)),
                                                       child: WebViewAware(
                                                         child: GestureDetector(
-                                                          onTap: () =>
-                                                              FocusScope.of(
-                                                                      dialogContext)
-                                                                  .unfocus(),
+                                                          onTap: () {
+                                                            FocusScope.of(
+                                                                    dialogContext)
+                                                                .unfocus();
+                                                            FocusManager
+                                                                .instance
+                                                                .primaryFocus
+                                                                ?.unfocus();
+                                                          },
                                                           child:
                                                               SaveGpaComponentWidget(
                                                             result:
@@ -1473,8 +1483,11 @@ class _GradeCalulatorWidgetState extends State<GradeCalulatorWidget> {
                                                                             WebViewAware(
                                                                           child:
                                                                               GestureDetector(
-                                                                            onTap: () =>
-                                                                                FocusScope.of(dialogContext).unfocus(),
+                                                                            onTap:
+                                                                                () {
+                                                                              FocusScope.of(dialogContext).unfocus();
+                                                                              FocusManager.instance.primaryFocus?.unfocus();
+                                                                            },
                                                                             child:
                                                                                 DeleteGradeHistoryWidget(
                                                                               mygradeRef: listViewMyGradeRecord.reference,

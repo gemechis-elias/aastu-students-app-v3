@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -78,7 +79,7 @@ class _CreateModalWidgetState extends State<CreateModalWidget> {
                         width: 60.0,
                         height: 4.0,
                         decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).alternate,
+                          color: FlutterFlowTheme.of(context).secondaryText,
                           borderRadius: BorderRadius.circular(4.0),
                         ),
                       ),

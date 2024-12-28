@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'dart:math';
+import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -15,6 +16,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'religious_community_model.dart';
 export 'religious_community_model.dart';
 
@@ -67,7 +69,10 @@ class _ReligiousCommunityWidgetState extends State<ReligiousCommunityWidget>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -257,15 +262,26 @@ class _ReligiousCommunityWidgetState extends State<ReligiousCommunityWidget>
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Expanded(
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                            child: Image.network(
-                                              columnReligiousCommunitiesRecord
-                                                  .logoUrl,
-                                              width: 200.0,
-                                              height: 200.0,
-                                              fit: BoxFit.cover,
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              await launchURL(
+                                                  columnReligiousCommunitiesRecord
+                                                      .url);
+                                            },
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                              child: Image.network(
+                                                columnReligiousCommunitiesRecord
+                                                    .logoUrl,
+                                                width: 200.0,
+                                                height: 200.0,
+                                                fit: BoxFit.cover,
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -322,16 +338,31 @@ class _ReligiousCommunityWidgetState extends State<ReligiousCommunityWidget>
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),
-                                              Text(
-                                                columnReligiousCommunitiesRecord
-                                                    .phoneNumber,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Figtree',
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                              InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  await launchUrl(Uri(
+                                                    scheme: 'tel',
+                                                    path:
+                                                        columnReligiousCommunitiesRecord
+                                                            .phoneNumber,
+                                                  ));
+                                                },
+                                                child: Text(
+                                                  columnReligiousCommunitiesRecord
+                                                      .phoneNumber,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Figtree',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
                                               ),
                                             ],
                                           ),

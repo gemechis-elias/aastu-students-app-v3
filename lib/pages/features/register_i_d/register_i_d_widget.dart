@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
+import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -222,18 +223,6 @@ class _RegisterIDWidgetState extends State<RegisterIDWidget> {
                                       safeSetState(() {
                                         _model.barCodeTextController?.text =
                                             _model.resultBarcode!;
-                                        _model.barCodeFocusNode?.requestFocus();
-                                        WidgetsBinding.instance
-                                            .addPostFrameCallback((_) {
-                                          _model.barCodeTextController
-                                                  ?.selection =
-                                              TextSelection.collapsed(
-                                            offset: _model
-                                                .barCodeTextController!
-                                                .text
-                                                .length,
-                                          );
-                                        });
                                       });
                                     } else {
                                       ScaffoldMessenger.of(context)
@@ -347,7 +336,8 @@ class _RegisterIDWidgetState extends State<RegisterIDWidget> {
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     filled: true,
-                                    fillColor: Color(0xFFF8F8F8),
+                                    fillColor: FlutterFlowTheme.of(context)
+                                        .inputBackground,
                                     contentPadding:
                                         EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
@@ -428,7 +418,8 @@ class _RegisterIDWidgetState extends State<RegisterIDWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       filled: true,
-                                      fillColor: Color(0xFFF8F8F8),
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .inputBackground,
                                       contentPadding:
                                           EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
@@ -511,7 +502,8 @@ class _RegisterIDWidgetState extends State<RegisterIDWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       filled: true,
-                                      fillColor: Color(0xFFF8F8F8),
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .inputBackground,
                                       contentPadding:
                                           EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
@@ -580,7 +572,8 @@ class _RegisterIDWidgetState extends State<RegisterIDWidget> {
                                         .secondaryText,
                                     size: 24.0,
                                   ),
-                                  fillColor: Color(0xFFF8F8F8),
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .inputBackground,
                                   elevation: 2.0,
                                   borderColor: Colors.transparent,
                                   borderWidth: 0.0,
@@ -625,7 +618,8 @@ class _RegisterIDWidgetState extends State<RegisterIDWidget> {
                                         .secondaryText,
                                     size: 24.0,
                                   ),
-                                  fillColor: Color(0xFFF8F8F8),
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .inputBackground,
                                   elevation: 2.0,
                                   borderColor: Colors.transparent,
                                   borderWidth: 0.0,
@@ -723,7 +717,8 @@ class _RegisterIDWidgetState extends State<RegisterIDWidget> {
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                color: Color(0xFFF8F8F8),
+                                color: FlutterFlowTheme.of(context)
+                                    .inputBackground,
                                 borderRadius: BorderRadius.circular(6.0),
                               ),
                               child: Padding(
